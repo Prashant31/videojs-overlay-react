@@ -1,0 +1,45 @@
+{
+  "name": "videojs-overlay-react",
+  "version": "0.0.1",
+  "description": "React Component To add Overlays on VideoJS players",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prashant31/videojs-overlay-react.git"
+  },
+  "keywords": [
+    "Videojs",
+    "Oerlay",
+    "react"
+  ],
+  "author": "Prashant pal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Prashant31/videojs-overlay-react/issues"
+  },
+  "homepage": "https://github.com/Prashant31/videojs-overlay-react#readme",
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "react-scripts": "2.1.3"
+  }
+}
