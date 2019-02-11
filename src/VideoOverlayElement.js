@@ -4,14 +4,14 @@ import videojs from 'video.js';
 import Utils from "./utils";
 import DefaultOverlayElement from "./DefaultOverlayElement";
 
-const vjsComponent = videojs.getComponent('Component');
+const VComponent = videojs.getComponent('Component');
 
 const dom = videojs.dom || videojs;
 
 const isNumber = n => typeof n === 'number' && n === n;
 const hasNoWhitespace = s => typeof s === 'string' && (/^\S+$/).test(s);
 
-class VjsOverlayElement extends vjsComponent {
+class VideoOverlayElement extends VComponent {
 
     constructor(player, options) {
         super(player, options);
@@ -37,7 +37,7 @@ class VjsOverlayElement extends vjsComponent {
         // caused by crappy libraries clobbering Function.prototype.bind.
         // - https://github.com/videojs/video.js/issues/3097
         ['endListener_', 'rewindListener_', 'startListener_'].forEach(name => {
-            this[name] = (e) => VjsOverlayElement.prototype[name].call(this, e);
+            this[name] = (e) => VideoOverlayElement.prototype[name].call(this, e);
         });
 
         // If the start event is a timeupdate, we need to watch for rewinds (i.e.,
@@ -231,12 +231,13 @@ class VjsOverlayElement extends vjsComponent {
     mount() {
         console.log(this.options_);
         if (this.options_.overlay_element) {
+            print(this.options_);
             const OverlayElement = this.options_.overlay_element;
-            ReactDOM.render(<OverlayElement vjsComponent={this} {...this.options_.data}/>, this.el());
+            ReactDOM.render( <OverlayElement vjsComponent={this} {...this.options_.data}/>, this.el());
         } else {
-            ReactDOM.render(<DefaultOverlayElement vjsComponent={this} {...this.options_.data}/>, this.el());
+            ReactDOM.render( <DefaultOverlayElement vjsComponent={this} {...this.options_.data}/>, this.el());
         }
     }
 }
 
-export default VjsOverlayElement
+export default VideoOverlayElement

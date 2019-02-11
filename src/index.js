@@ -1,8 +1,8 @@
 import videojs from 'video.js';
-import VjsOverlayElement from './VjsOverlayElement'
+import VideoOverlayElement from './VideoOverlayElement'
+
 
 const VideoOverlay = function (options) {
-
     const settings = videojs.mergeOptions({}, options);
 
     // De-initialize the plugin if it already has an array of overlays.
@@ -22,6 +22,7 @@ const VideoOverlay = function (options) {
     // because it doesn't make sense to pass it to each Overlay component.
     delete settings.overlays;
     console.log(this);
+
     this.overlays_ = overlays.map(o => {
         const mergeOptions = videojs.mergeOptions(settings, o);
         const attachToControlBar = typeof mergeOptions.attachToControlBar === 'string' || mergeOptions.attachToControlBar === true;
@@ -47,9 +48,7 @@ const VideoOverlay = function (options) {
                 return controlBarChild;
             }
         }
-
-        const playerChild = this.addChild('VjsOverlayElement', mergeOptions);
-
+        const playerChild = this.addChild('VideoOverlayElement', mergeOptions);
         this.el().insertBefore(
             playerChild.el(),
             this.controlBar.el()
@@ -57,8 +56,9 @@ const VideoOverlay = function (options) {
         return playerChild;
     });
 };
+// videojs.registerComponent('VideoOverlayElement', VideoOverlayElement);
+//
+// console.log("Fucking Get Called");
+// console.log(videojs.getComponent('VideoOverlayElement'));
 
-
-videojs.getComponent('Component').registerComponent('VjsOverlayElement', VjsOverlayElement);
-
-export default VideoOverlay;
+export { VideoOverlay, VideoOverlayElement};
